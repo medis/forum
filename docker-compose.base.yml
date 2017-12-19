@@ -1,0 +1,32 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: forum/app
+    volumes:
+      - .:/var/www/html
+    networks:
+      - fnet
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: forum/node
+    volumes:
+      - .:/var/www/html
+    networks:
+      - fnet
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - fnet
+  redis:
+    image: redis:alpine
+    volumes:
+      - redisdata:/data
+    networks:
+      - fnet

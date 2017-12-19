@@ -8,7 +8,14 @@ export DB_NAME=${DB_DATABASE:-forum}
 export DB_USER=${DB_USER:-forum}
 export DB_PASS=${DB_PASS:-forum_pass}
 
-COMPOSE="docker-compose"
+COMPOSE_FILE="dev"
+
+# $BUILD_NUMBER comes from Jenkins.
+if [ ! -z "$BUILD_NUMBER" ]; then
+  COMPOSE_FILE="ci"
+fi
+
+COMPOSE="docker-compose -f docker-compose.$COMPOSE_FILE.yml"
 
 if [ $# -gt 0 ]; then
   if [ "$1" == "art" ]; then
