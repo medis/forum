@@ -30,7 +30,7 @@ COPY default /etc/nginx/sites-available/default
 
 COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 
-EXPOSE 8000
+EXPOSE 80
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
