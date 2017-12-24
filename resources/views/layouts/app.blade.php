@@ -12,6 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        body { padding-bottom: 100px; }
+        .level { display: flex; align-items: center; }
+        .flex { flex: 1; }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -39,10 +45,11 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/threads">All threads</a></li>
+                                <li><a href="/threads">All Threads</a></li>
                                 @if (auth()->check())
-                                    <li><a href="/threads?by={{ auth()->user()->name }}">My threads</a></li>
+                                    <li><a href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
                                 @endif
+                                <li><a href="/threads?popular=1">Popular Threads</a></li>
                             </ul>
                         </li>
                         <li>
