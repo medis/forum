@@ -9,7 +9,6 @@ use App\Filters\ThreadFilters;
 
 class ThreadsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
@@ -59,8 +58,8 @@ class ThreadsController extends Controller
         $thread = Thread::create([
             'user_id' => auth()->id(),
             'channel_id' => $request->channel_id,
-            'title'   => $request->title,
-            'body'    => $request->body
+            'title' => $request->title,
+            'body' => $request->body
         ]);
 
         return redirect($thread->path());
@@ -115,8 +114,9 @@ class ThreadsController extends Controller
         //
     }
 
-    public function getThreads($channel, $filters) {
-        $threads = Thread::latest()->filter($filters);
+    public function getThreads($channel, $filters)
+    {
+        $threads = Thread::with('channel')->latest()->filter($filters);
 
         if ($channel->exists) {
             $threads->where('channel_id', $channel->id);
