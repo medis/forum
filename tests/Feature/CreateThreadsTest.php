@@ -3,9 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CreateThreadsTest extends TestCase
 {
@@ -38,21 +36,21 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    function a_thread_requires_a_title()
+    public function a_thread_requires_a_title()
     {
         $this->publishThread(['title' => null])
              ->assertSessionHasErrors('title');
     }
 
     /** @test */
-    function a_thread_requires_a_body()
+    public function a_thread_requires_a_body()
     {
         $this->publishThread(['body' => null])
              ->assertSessionHasErrors('body');
     }
 
     /** @test */
-    function a_thread_requires_a_valid_channel()
+    public function a_thread_requires_a_valid_channel()
     {
         factory('App\Channel', 2)->create();
 
