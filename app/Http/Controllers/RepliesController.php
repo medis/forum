@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class RepliesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,13 +45,13 @@ class RepliesController extends Controller
         $this->validate($request, [
             'body' => 'required'
         ]);
-        
+
         $thread->addReply([
             'body' => $request->body,
             'user_id' => auth()->id()
         ]);
 
-        return back();
+        return back()->with('flash', 'Your reply has been left');
     }
 
     /**
