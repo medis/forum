@@ -17,4 +17,9 @@ class Reply extends Model
         // Pass user_id because function name is owner rather than user.
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function thread()
+    {
+        return $this->belongsTo(Thread::class);
+    }
 }
