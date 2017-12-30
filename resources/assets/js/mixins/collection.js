@@ -4,9 +4,9 @@ export default {
             items: []
         }
     },
-    
+
     methods: {
-        add(reply) {
+        add(item) {
             this.items.push(item);
             this.$emit('added');
         },
