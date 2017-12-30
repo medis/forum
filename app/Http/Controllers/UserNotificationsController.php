@@ -13,6 +13,7 @@ class UserNotificationsController extends Controller
 
     public function index(User $user)
     {
+        // Ignore incoming user object because we always want to modify current user.
         return auth()->user()->unreadNotifications;
     }
 
