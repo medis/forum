@@ -42,6 +42,10 @@ class RepliesController extends Controller
      */
     public function store(Request $request, $channelId, Thread $thread)
     {
+        if (\Gate::denies('create', new Reply)) {
+            return response('You are posting too frequantly. Please take a break.', 422);
+        }
+
         try {
             $this->validate(request(), ['body' => 'required|spamfree']);
 
