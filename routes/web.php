@@ -27,7 +27,7 @@ Route::post('/threads', 'ThreadsController@store')->middleware('must-be-confirme
 // Route::resource('threads', 'ThreadsController');
 Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
-Route::delete('/replies/{reply}', 'RepliesController@destroy');
+Route::delete('/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
 
 Route::post('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsController@store')->middleware('auth');
 Route::delete('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsController@destroy')->middleware('auth');
