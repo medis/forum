@@ -60,6 +60,11 @@ class User extends Authenticatable
         $this->save();
     }
 
+    public function isAdmin()
+    {
+        return in_array($this->name, ['JohnDoe', 'JaneDoe']);
+    }
+
     public function visitedThreadCacheKey(Thread $thread)
     {
         return sprintf('users.%s.visits.%s', $this->id, $thread->id);
