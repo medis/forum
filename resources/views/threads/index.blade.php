@@ -10,6 +10,27 @@
         </div>
 
         <div class="col-md-4">
+
+            <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Search
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <form method="GET" action="/threads/search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search for sometihng ..." name="q" class="form-control" />
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-default" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+
             @if (count($trending))
                 <div class="panel panel-default">
                     <div class="panel-heading">
